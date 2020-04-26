@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
+import { Form } from '@unform/core';
 import { Container, Content, Background } from './styles';
 
 import Input from '../../Components/Input';
@@ -7,34 +8,40 @@ import Button from '../../Components/Button';
 
 import logo from '../../assets/logo.svg';
 
-const Signin: React.FC = () => (
-  <Container>
-    <Content>
-      <img src={logo} alt="GoBarber" />
+const Signin: React.FC = () => {
+  const handleSubmit = useCallback(data => {
+    console.log(data);
+  }, []);
 
-      <form>
-        <h1>Sign in</h1>
+  return (
+    <Container>
+      <Content>
+        <img src={logo} alt="GoBarber" />
 
-        <Input name="email" icon={FiMail} type="email" placeholder="Email" />
-        <Input
-          name="password"
-          icon={FiLock}
-          type="password"
-          placeholder="Password"
-        />
+        <Form onSubmit={handleSubmit}>
+          <h1>Sign in</h1>
 
-        <Button type="submit">Sign in</Button>
+          <Input name="email" icon={FiMail} type="email" placeholder="Email" />
+          <Input
+            name="password"
+            icon={FiLock}
+            type="password"
+            placeholder="Password"
+          />
 
-        <a href="forgot">Forgot my password</a>
-      </form>
+          <Button type="submit">Sign in</Button>
 
-      <a href="new">
-        <FiLogIn />
-        Create new account
-      </a>
-    </Content>
-    <Background />
-  </Container>
-);
+          <a href="forgot">Forgot my password</a>
+        </Form>
+
+        <a href="new">
+          <FiLogIn />
+          Create new account
+        </a>
+      </Content>
+      <Background />
+    </Container>
+  );
+};
 
 export default Signin;
