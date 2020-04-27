@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useContext } from 'react';
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
@@ -11,32 +11,48 @@ import Button from '../../Components/Button';
 import getValidationErrors from '../../util/getValidationErrors';
 
 import logo from '../../assets/logo.svg';
+import { AuthContext } from '../../context/AuthContext';
+
+interface SignInFormData {
+  email: string;
+  password: string;
+}
 
 const Signin: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const handleSubmit = useCallback(async (data: object) => {
-    try {
-      // eslint-disable-next-line no-unused-expressions
-      formRef.current?.setErrors({});
+  const { signIn } = useContext(AuthContext);
 
-      const schema = Yup.object().shape({
-        email: Yup.string()
-          .required('E-mail is required.')
-          .email('Must be a valid e-mail.'),
-        password: Yup.string().required('Password is required.'),
-      });
+  const handleSubmit = useCallback(
+    async (data: SignInFormData) => {
+      try {
+        // eslint-disable-next-line no-unused-expressions
+        formRef.current?.setErrors({});
 
-      await schema.validate(data, {
-        abortEarly: false,
-      });
-    } catch (err) {
-      const errors = getValidationErrors(err);
+        const schema = Yup.object().shape({
+          email: Yup.string()
+            .required('E-mail is required.')
+            .email('Must be a valid e-mail.'),
+          password: Yup.string().required('Password is required.'),
+        });
 
-      // eslint-disable-next-line no-unused-expressions
-      formRef.current?.setErrors(errors);
-    }
-  }, []);
+        await schema.validate(data, {
+          abortEarly: false,
+        });
+
+        const { email, password } = data;
+
+        signIn({ email, password });
+      } catch (err) {
+        const errors = getValidationErrors(err);
+
+        // eslint-disable-next-line no-unused-expressions
+        formRef.current?.setErrors(errors);
+      }
+    },
+    [signIn],
+  );
+
   return (
     <Container>
       <Content>
