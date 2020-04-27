@@ -1,24 +1,48 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
-import { Form } from '@unform/core';
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/web';
+import * as Yup from 'yup';
 import { Container, Content, Background } from './styles';
 
 import Input from '../../Components/Input';
 import Button from '../../Components/Button';
 
+import getValidationErrors from '../../util/getValidationErrors';
+
 import logo from '../../assets/logo.svg';
 
 const Signin: React.FC = () => {
-  const handleSubmit = useCallback(data => {
-    console.log(data);
-  }, []);
+  const formRef = useRef<FormHandles>(null);
 
+  const handleSubmit = useCallback(async (data: object) => {
+    try {
+      // eslint-disable-next-line no-unused-expressions
+      formRef.current?.setErrors({});
+
+      const schema = Yup.object().shape({
+        email: Yup.string()
+          .required('E-mail is required.')
+          .email('Must be a valid e-mail.'),
+        password: Yup.string().required('Password is required.'),
+      });
+
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+    } catch (err) {
+      const errors = getValidationErrors(err);
+
+      // eslint-disable-next-line no-unused-expressions
+      formRef.current?.setErrors(errors);
+    }
+  }, []);
   return (
     <Container>
       <Content>
         <img src={logo} alt="GoBarber" />
 
-        <Form onSubmit={handleSubmit}>
+        <Form ref={formRef} onSubmit={handleSubmit}>
           <h1>Sign in</h1>
 
           <Input name="email" icon={FiMail} type="email" placeholder="Email" />
