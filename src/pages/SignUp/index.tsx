@@ -3,7 +3,8 @@ import { Form } from '@unform/web';
 import { FiMail, FiLock, FiUser, FiArrowLeft } from 'react-icons/fi';
 import * as Yup from 'yup';
 import { FormHandles } from '@unform/core';
-import { Container, Content, Background } from './styles';
+import { Link } from 'react-router-dom';
+import { Container, Content, Background, AnimationContainer } from './styles';
 import getValidationErrors from '../../util/getValidationErrors';
 
 import Input from '../../Components/Input';
@@ -42,27 +43,33 @@ const Signin: React.FC = () => {
     <Container>
       <Background />
       <Content>
-        <img src={logo} alt="GoBarber" />
+        <AnimationContainer>
+          <img src={logo} alt="GoBarber" />
+          <Form ref={formRef} onSubmit={handleSubmit}>
+            <h1>Create new account.</h1>
 
-        <Form ref={formRef} onSubmit={handleSubmit}>
-          <h1>Create new account.</h1>
+            <Input name="name" icon={FiUser} type="text" placeholder="Name" />
+            <Input
+              name="email"
+              icon={FiMail}
+              type="email"
+              placeholder="Email"
+            />
+            <Input
+              name="password"
+              icon={FiLock}
+              type="password"
+              placeholder="Password"
+            />
 
-          <Input name="name" icon={FiUser} type="text" placeholder="Name" />
-          <Input name="email" icon={FiMail} type="email" placeholder="Email" />
-          <Input
-            name="password"
-            icon={FiLock}
-            type="password"
-            placeholder="Password"
-          />
+            <Button type="submit">Create</Button>
+          </Form>
 
-          <Button type="submit">Create</Button>
-        </Form>
-
-        <a href="new">
-          <FiArrowLeft />
-          Back to sign in page
-        </a>
+          <Link to="/">
+            <FiArrowLeft />
+            Back to sign in page
+          </Link>
+        </AnimationContainer>
       </Content>
     </Container>
   );

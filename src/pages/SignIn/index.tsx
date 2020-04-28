@@ -1,9 +1,10 @@
-import React, { useCallback, useRef, useContext } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
-import { Container, Content, Background } from './styles';
+import { Link } from 'react-router-dom';
+import { Container, Content, Background, AnimationContainer } from './styles';
 
 import Input from '../../Components/Input';
 import Button from '../../Components/Button';
@@ -11,7 +12,8 @@ import Button from '../../Components/Button';
 import getValidationErrors from '../../util/getValidationErrors';
 
 import logo from '../../assets/logo.svg';
-import { AuthContext } from '../../context/AuthContext';
+import { useAuth } from '../../hooks/auth';
+import { useToast } from '../../hooks/toast';
 
 interface SignInFormData {
   email: string;
@@ -21,7 +23,8 @@ interface SignInFormData {
 const Signin: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const { signIn } = useContext(AuthContext);
+  const { signIn } = useAuth();
+  const { addToast } = useToast();
 
   const handleSubmit = useCallback(
     async (data: SignInFormData) => {
@@ -42,42 +45,60 @@ const Signin: React.FC = () => {
 
         const { email, password } = data;
 
-        signIn({ email, password });
+        await signIn({ email, password });
       } catch (err) {
-        const errors = getValidationErrors(err);
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
 
-        // eslint-disable-next-line no-unused-expressions
-        formRef.current?.setErrors(errors);
+          // eslint-disable-next-line no-unused-expressions
+          formRef.current?.setErrors(errors);
+
+          return;
+        }
+
+        addToast({
+          type: 'success',
+          title: 'Authentication error',
+          description:
+            'An error ocorrered, please check your email/password combination',
+        });
       }
     },
-    [signIn],
+    [signIn, addToast],
   );
 
   return (
     <Container>
       <Content>
-        <img src={logo} alt="GoBarber" />
+        <AnimationContainer>
+          <img src={logo} alt="GoBarber" />
 
-        <Form ref={formRef} onSubmit={handleSubmit}>
-          <h1>Sign in</h1>
+          <Form ref={formRef} onSubmit={handleSubmit}>
+            <h1>Sign in</h1>
 
-          <Input name="email" icon={FiMail} type="email" placeholder="Email" />
-          <Input
-            name="password"
-            icon={FiLock}
-            type="password"
-            placeholder="Password"
-          />
+            <Input
+              name="email"
+              icon={FiMail}
+              type="email"
+              placeholder="Email"
+            />
+            <Input
+              name="password"
+              icon={FiLock}
+              type="password"
+              placeholder="Password"
+            />
 
-          <Button type="submit">Sign in</Button>
+            <Button type="submit">Sign in</Button>
 
-          <a href="forgot">Forgot my password</a>
-        </Form>
+            <a href="forgot">Forgot my password</a>
+          </Form>
 
-        <a href="new">
-          <FiLogIn />
-          Create new account
-        </a>
+          <Link to="/signup">
+            <FiLogIn />
+            Create new account
+          </Link>
+        </AnimationContainer>
       </Content>
       <Background />
     </Container>
