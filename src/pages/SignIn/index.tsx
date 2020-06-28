@@ -29,7 +29,6 @@ const Signin: React.FC = () => {
   const handleSubmit = useCallback(
     async (data: SignInFormData) => {
       try {
-        // eslint-disable-next-line no-unused-expressions
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
@@ -50,14 +49,13 @@ const Signin: React.FC = () => {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
 
-          // eslint-disable-next-line no-unused-expressions
           formRef.current?.setErrors(errors);
 
           return;
         }
 
         addToast({
-          type: 'success',
+          type: 'error',
           title: 'Authentication error',
           description:
             'An error ocorrered, please check your email/password combination',
@@ -74,7 +72,7 @@ const Signin: React.FC = () => {
           <img src={logo} alt="GoBarber" />
 
           <Form ref={formRef} onSubmit={handleSubmit}>
-            <h1>Sign in</h1>
+            <h1>Log in</h1>
 
             <Input
               name="email"
@@ -89,9 +87,9 @@ const Signin: React.FC = () => {
               placeholder="Password"
             />
 
-            <Button type="submit">Sign in</Button>
+            <Button type="submit">Log in</Button>
 
-            <a href="forgot">Forgot my password</a>
+            <Link to="forgot-password">Forgot my password</Link>
           </Form>
 
           <Link to="/signup">
