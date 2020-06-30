@@ -1,6 +1,13 @@
 import React, { useState, useCallback, useEffect, useMemo } from 'react';
 import DayPicker, { DayModifiers } from 'react-day-picker';
-import { format, isToday, isTomorrow, isAfter } from 'date-fns';
+import {
+  format,
+  isToday,
+  isTomorrow,
+  isAfter,
+  isBefore,
+  startOfDay,
+} from 'date-fns';
 import 'react-day-picker/lib/style.css';
 
 import { FiPower, FiClock } from 'react-icons/fi';
@@ -117,17 +124,17 @@ const Dashboard: React.FC = () => {
     return format(selectedDate, 'cccc');
   }, [selectedDate]);
 
-  // const disableDays = useMemo(() => {
-  //   const dates = monthAvailability
-  //     .filter(monthDay => !monthDay.available)
-  //     .map(monthDay => {
-  //       const year = currentMonth.getFullYear();
-  //       const month = currentMonth.getMonth();
-  //       return new Date(year, month, monthDay.day);
-  //     });
+  const unavailableDays = useMemo(() => {
+    const dates = monthAvailability
+      .filter(monthDay => !monthDay.available)
+      .map(monthDay => {
+        const year = currentMonth.getFullYear();
+        const month = currentMonth.getMonth();
+        return new Date(year, month, monthDay.day);
+      });
 
-  //   return dates;
-  // }, [monthAvailability, currentMonth]);
+    return dates;
+  }, [monthAvailability, currentMonth]);
 
   const selectedToday = useMemo(() => {
     if (isToday(selectedDate)) {
@@ -245,7 +252,10 @@ const Dashboard: React.FC = () => {
             weekdaysShort={['S', 'M', 'T', 'W', 'T', 'F', 'S']}
             fromMonth={new Date()}
             disabledDays={[{ daysOfWeek: [0, 6] }, { before: new Date() }]}
-            modifiers={{ available: { daysOfWeek: [1, 2, 3, 4, 5] } }}
+            modifiers={{
+              available: { daysOfWeek: [1, 2, 3, 4, 5] },
+              unavailable: [...unavailableDays],
+            }}
             selectedDays={selectedDate}
             onDayClick={handleDateChange}
             onMonthChange={handleMonthChange}
