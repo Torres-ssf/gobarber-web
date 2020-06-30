@@ -1,6 +1,14 @@
 import React, { useState, useCallback, useEffect, useMemo } from 'react';
 import DayPicker, { DayModifiers } from 'react-day-picker';
-import { format, isToday, isTomorrow, isAfter } from 'date-fns';
+import {
+  format,
+  isToday,
+  isTomorrow,
+  isAfter,
+  isWeekend,
+  isSaturday,
+  addDays,
+} from 'date-fns';
 import 'react-day-picker/lib/style.css';
 
 import { FiPower, FiClock } from 'react-icons/fi';
@@ -38,7 +46,15 @@ interface Appointment {
 }
 
 const Dashboard: React.FC = () => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(() => {
+    const today = new Date();
+
+    if (isWeekend(today)) {
+      return isSaturday(today) ? addDays(today, 2) : addDays(today, 1);
+    }
+
+    return today;
+  });
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [monthAvailability, setMonthAvailability] = useState<
     MonthAvailabilityItem[]
@@ -117,17 +133,17 @@ const Dashboard: React.FC = () => {
     return format(selectedDate, 'cccc');
   }, [selectedDate]);
 
-  // const disableDays = useMemo(() => {
-  //   const dates = monthAvailability
-  //     .filter(monthDay => !monthDay.available)
-  //     .map(monthDay => {
-  //       const year = currentMonth.getFullYear();
-  //       const month = currentMonth.getMonth();
-  //       return new Date(year, month, monthDay.day);
-  //     });
+  const unavailableDays = useMemo(() => {
+    const dates = monthAvailability
+      .filter(monthDay => !monthDay.available)
+      .map(monthDay => {
+        const year = currentMonth.getFullYear();
+        const month = currentMonth.getMonth();
+        return new Date(year, month, monthDay.day);
+      });
 
-  //   return dates;
-  // }, [monthAvailability, currentMonth]);
+    return dates;
+  }, [monthAvailability, currentMonth]);
 
   const selectedToday = useMemo(() => {
     if (isToday(selectedDate)) {
@@ -137,6 +153,8 @@ const Dashboard: React.FC = () => {
     if (isTomorrow(selectedDate)) {
       return <span>Tomorrow</span>;
     }
+
+    return undefined;
   }, [selectedDate]);
 
   return (
@@ -163,7 +181,7 @@ const Dashboard: React.FC = () => {
         <Schedule>
           <h1>Scheduled Appointments</h1>
           <p>
-            {selectedToday}
+            {selectedToday && selectedToday}
             <span>{selectedDateAsText}</span>
             <span>{selectedWeekDay}</span>
           </p>
@@ -245,7 +263,10 @@ const Dashboard: React.FC = () => {
             weekdaysShort={['S', 'M', 'T', 'W', 'T', 'F', 'S']}
             fromMonth={new Date()}
             disabledDays={[{ daysOfWeek: [0, 6] }, { before: new Date() }]}
-            modifiers={{ available: { daysOfWeek: [1, 2, 3, 4, 5] } }}
+            modifiers={{
+              available: { daysOfWeek: [1, 2, 3, 4, 5] },
+              unavailable: [...unavailableDays],
+            }}
             selectedDays={selectedDate}
             onDayClick={handleDateChange}
             onMonthChange={handleMonthChange}

@@ -252,8 +252,13 @@ export const Calendar = styled.aside`
     font-weight: normal;
   }
 
+  .DayPicker-Day--unavailable {
+    color: #fff !important;
+    background: #dc3545 !important;
+  }
+
   .DayPicker-Day--disabled {
-    color: #666360 !important;
+    color: #999591 !important;
     background: transparent !important;
   }
 
