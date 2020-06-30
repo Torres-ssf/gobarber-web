@@ -5,8 +5,9 @@ import {
   isToday,
   isTomorrow,
   isAfter,
-  isBefore,
-  startOfDay,
+  isWeekend,
+  isSaturday,
+  addDays,
 } from 'date-fns';
 import 'react-day-picker/lib/style.css';
 
@@ -45,7 +46,15 @@ interface Appointment {
 }
 
 const Dashboard: React.FC = () => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(() => {
+    const today = new Date();
+
+    if (isWeekend(today)) {
+      return isSaturday(today) ? addDays(today, 2) : addDays(today, 1);
+    }
+
+    return today;
+  });
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [monthAvailability, setMonthAvailability] = useState<
     MonthAvailabilityItem[]
