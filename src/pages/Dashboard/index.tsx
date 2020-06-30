@@ -153,6 +153,8 @@ const Dashboard: React.FC = () => {
     if (isTomorrow(selectedDate)) {
       return <span>Tomorrow</span>;
     }
+
+    return undefined;
   }, [selectedDate]);
 
   return (
@@ -179,7 +181,7 @@ const Dashboard: React.FC = () => {
         <Schedule>
           <h1>Scheduled Appointments</h1>
           <p>
-            {selectedToday}
+            {selectedToday && selectedToday}
             <span>{selectedDateAsText}</span>
             <span>{selectedWeekDay}</span>
           </p>
