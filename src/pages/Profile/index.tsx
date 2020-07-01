@@ -17,7 +17,9 @@ import { useAuth } from '../../hooks/auth';
 interface ProfileFormData {
   name: string;
   email: string;
+  old_password: string;
   password: string;
+  password_confirmation: string;
 }
 
 const Profile: React.FC = () => {
@@ -29,7 +31,6 @@ const Profile: React.FC = () => {
   const handleSubmit = useCallback(
     async (data: ProfileFormData) => {
       try {
-        // eslint-disable-next-line no-unused-expressions
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
@@ -37,27 +38,59 @@ const Profile: React.FC = () => {
           email: Yup.string()
             .required('E-mail is required.')
             .email('Must be a valid e-mail.'),
-          password: Yup.string().min(6, 'At least 6 digits'),
+          old_password: Yup.string(),
+          password: Yup.string().when('old_password', {
+            is: val => !!val,
+            then: Yup.string().min(6),
+            otherwise: Yup.string(),
+          }),
+          password_confirmation: Yup.string()
+            .when('old_password', {
+              is: val => !!val,
+              then: Yup.string().required(),
+              otherwise: Yup.string(),
+            })
+            .oneOf(
+              [Yup.ref('password'), null],
+              'Password confirmation does not match with password',
+            ),
         });
 
         await schema.validate(data, {
           abortEarly: false,
         });
 
-        await api.post('/users', data);
+        const {
+          name,
+          email,
+          old_password,
+          password,
+          password_confirmation,
+        } = data;
 
-        history.push('/');
+        const formData = {
+          name,
+          email,
+          ...(old_password
+            ? { old_password, password, password_confirmation }
+            : {}),
+        };
+
+        const response = await api.put('/profile', formData);
+
+        updateUser(response.data);
+
+        history.push('/dashboard');
 
         addToast({
           type: 'success',
-          title: 'Account created successfully',
-          description: 'You can already sign in ',
+          title: 'Profile updated',
+          description: 'Your profile was successfully uptaded',
         });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
 
-          // eslint-disable-next-line no-unused-expressions
           formRef.current?.setErrors(errors);
 
           return;
@@ -65,12 +98,12 @@ const Profile: React.FC = () => {
 
         addToast({
           type: 'error',
-          title: 'Error while creating new account',
+          title: 'Error while trying to update your profile',
           description: 'An erros has occurred, please try again',
         });
       }
     },
-    [addToast, history],
+    [addToast, updateUser, history],
   );
 
   const handleAvatarChange = useCallback(
