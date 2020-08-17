@@ -21,6 +21,21 @@
   </p>
 </p>
 
+<!-- TABLE OF CONTENTS -->
+
+## Table of Contents
+
+- [About the Project](#about-the-project)
+  - [Live Demo](#live-demo)
+  - [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
+
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
@@ -107,7 +122,6 @@ http//localhost:3000
 Contributions, issues and feature requests are welcome!
 
 Feel free to check the [issues page](https://github.com/Torres-ssf/gobarber-web/issues).
-5. Open a Pull Request
 
 ## Authors
 
@@ -125,7 +139,7 @@ Feel free to check the [issues page](https://github.com/Torres-ssf/gobarber-web/
 
 ## 📝 License
 
-This project is [MIT](lic.url) licensed.
+This project is [MIT](README.md) licensed.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
