@@ -1,3 +1,8 @@
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -96,3 +101,39 @@ Runs the app in the development mode.<br />
 ```JS
 http//localhost:3000
 ```
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/Torres-ssf/gobarber-web/issues).
+5. Open a Pull Request
+
+## Authors
+
+👤 **Torres-ssf**
+
+- Github: [@Torres-ssf](https://github.com/Torres-ssf)
+- Twitter: [@torres_ssf](https://twitter.com/torres_ssf)
+- Linkedin: [torres-ssf](https://www.linkedin.com/in/torres-ssf/)
+
+## Acknowledgments
+
+- Built this project was only possible because of the skills I aquired during the [GoStack Bootcamp](https://rocketseat.com.br/).
+
+<!-- LICENSE -->
+
+## 📝 License
+
+This project is [MIT](lic.url) licensed.
+
+<!-- MARKDOWN LINKS & IMAGES -->
+
+[contributors-shield]: https://img.shields.io/github/contributors/Torres-ssf/gobarber-backend.svg?style=flat-square
+[contributors-url]: https://github.com/Torres-ssf/gobarber-web/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Torres-ssf/gobarber-web.svg?style=flat-square
+[forks-url]: https://github.com/Torres-ssf/gobarber-web/network/members
+[stars-shield]: https://img.shields.io/github/stars/Torres-ssf/gobarber-web.svg?style=flat-square
+[stars-url]: https://github.com/Torres-ssf/gobarber-web/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Torres-ssf/gobarber-web.svg?style=flat-square
+[issues-url]: https://github.com/Torres-ssf/gobarber-web/issues
