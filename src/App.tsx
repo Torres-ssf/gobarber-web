@@ -1,7 +1,23 @@
 import React from 'react';
 
-const App: React.FC = () => {
-  return <h1>Hello world</h1>;
-};
+import { BrowserRouter as Router } from 'react-router-dom';
+
+import Routes from './routes';
+
+import GlobalStyles from './styles/global';
+
+import AppProvider from './hooks';
+
+const App: React.FC = () => (
+  <>
+    <Router>
+      <AppProvider>
+        <Routes />
+      </AppProvider>
+    </Router>
+
+    <GlobalStyles />
+  </>
+);
 
 export default App;

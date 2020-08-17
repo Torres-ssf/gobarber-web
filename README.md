@@ -1,44 +1,153 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
 
-## Available Scripts
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+    <img src="logo.png" alt="Logo" width="269" height="98">
+
+  <h3 align="center">GoBarber Web</h3>
+
+  <p align="center">
+    The web version of the GoBarber App.
+    <br />
+    <a href="#">View Demo(SOON)</a>
+    ·
+    <a href="https://github.com/Torres-ssf/gobarber-web/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/Torres-ssf/gobarber-web/issues">Request Feature</a>
+  </p>
+</p>
+
+<!-- TABLE OF CONTENTS -->
+
+## Table of Contents
+
+- [About the Project](#about-the-project)
+  - [Live Demo](#live-demo)
+  - [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
+
+<!-- ABOUT THE PROJECT -->
+
+## About The Project
+
+![](screen1.png)
+
+The web version of GoBarber, an app for service providers, such as Barbers, to control customer schedules, received via the Mobile application. This application was designed during the GoStack bootcamp.
+
+## Live Demo
+
+Click [here](https://github.com/Torres-ssf/gobarber-web/) for a live demo of the app(SOON).
+
+### Built With
+
+The project was built using the following languages stacks:
+
+```sh
+Front-End(client-side)
+```
+
+- [React](https://github.com/facebook/react)
+- Typescript
+- [Styled-Components](https://styled-components.com/)
+- [Axios](https://www.npmjs.com/package/axios)
+- [Unform](https://www.npmjs.com/package/unform)
+- [date-fns](https://www.npmjs.com/package/date-fns)
+- [Polished](https://www.npmjs.com/package/polished)
+- [React-Icons](https://react-icons.github.io/react-icons/)
+- [Yup](https://www.npmjs.com/package/yup)
+
+```sh
+Testing Frameworks
+```
+
+- [Jest](https://www.npmjs.com/package/jest)
+
+<!-- GETTING STARTED -->
+
+## Getting Started
+
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+- NPM
+
+### Installation
+
+1. Clone the repo
+
+```sh
+git clone https://github.com/Torres-ssf/gobarber-web/
+```
+
+2. CD into the project root directory
+
+```sh
+cd gobarber-web/
+```
+
+3. Install npm packages
+
+```sh
+yarn
+```
+
+4. This is the client-side of the GoBarber application. You will need to set up the server-side first before using this application. You can find GoBarber Backend [here](https://github.com/Torres-ssf/gobarber-backend).
+
+## Usage
 
 In the project directory, you can run:
 
-### `yarn start`
-
+```JS
+yarn start
+```
 Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+```JS
+http//localhost:3000
+```
 
-### `yarn test`
+## 🤝 Contributing
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Contributions, issues and feature requests are welcome!
 
-### `yarn build`
+Feel free to check the [issues page](https://github.com/Torres-ssf/gobarber-web/issues).
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Authors
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+👤 **Torres-ssf**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Github: [@Torres-ssf](https://github.com/Torres-ssf)
+- Twitter: [@torres_ssf](https://twitter.com/torres_ssf)
+- Linkedin: [torres-ssf](https://www.linkedin.com/in/torres-ssf/)
 
-### `yarn eject`
+## Acknowledgments
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Built this project was only possible because of the skills I aquired during the [GoStack Bootcamp](https://rocketseat.com.br/).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<!-- LICENSE -->
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 📝 License
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+This project is [MIT](LICENSE.md) licensed.
 
-## Learn More
+<!-- MARKDOWN LINKS & IMAGES -->
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[contributors-shield]: https://img.shields.io/github/contributors/Torres-ssf/gobarber-backend.svg?style=flat-square
+[contributors-url]: https://github.com/Torres-ssf/gobarber-web/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Torres-ssf/gobarber-web.svg?style=flat-square
+[forks-url]: https://github.com/Torres-ssf/gobarber-web/network/members
+[stars-shield]: https://img.shields.io/github/stars/Torres-ssf/gobarber-web.svg?style=flat-square
+[stars-url]: https://github.com/Torres-ssf/gobarber-web/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Torres-ssf/gobarber-web.svg?style=flat-square
+[issues-url]: https://github.com/Torres-ssf/gobarber-web/issues
