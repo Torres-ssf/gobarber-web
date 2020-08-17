@@ -27,3 +27,27 @@ The web version of GoBarber, an app for service providers, such as Barbers, to c
 ## Live Demo
 
 Click [here](https://github.com/Torres-ssf/gobarber-web/) for a live demo of the app(SOON).
+
+### Built With
+
+The project was built using the following languages stacks:
+
+```sh
+Front-End(client-side)
+```
+
+- [React](https://github.com/facebook/react)
+- Typescript
+- [Styled-Components](https://styled-components.com/)
+- [Axios](https://www.npmjs.com/package/axios)
+- [Unform](https://www.npmjs.com/package/unform)
+- [date-fns](https://www.npmjs.com/package/date-fns)
+- [Polished](https://www.npmjs.com/package/polished)
+- [React-Icons](https://react-icons.github.io/react-icons/)
+- [Yup](https://www.npmjs.com/package/yup)
+
+```sh
+Testing Frameworks
+```
+
+- [Jest](https://www.npmjs.com/package/jest)
