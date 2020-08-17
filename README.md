@@ -51,3 +51,48 @@ Testing Frameworks
 ```
 
 - [Jest](https://www.npmjs.com/package/jest)
+
+<!-- GETTING STARTED -->
+
+## Getting Started
+
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+- NPM
+
+### Installation
+
+1. Clone the repo
+
+```sh
+git clone https://github.com/Torres-ssf/gobarber-web/
+```
+
+2. CD into the project root directory
+
+```sh
+cd gobarber-web/
+```
+
+3. Install npm packages
+
+```sh
+yarn
+```
+
+4. This is the client-side of the GoBarber application. You will need to set up the server-side first before using this application. You can find GoBarber Backend [here](https://github.com/Torres-ssf/gobarber-backend).
+
+## Usage
+
+In the project directory, you can run:
+
+```JS
+yarn start
+```
+Runs the app in the development mode.<br />
+
+```JS
+http//localhost:3000
+```
