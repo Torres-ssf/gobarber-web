@@ -139,7 +139,7 @@ Feel free to check the [issues page](https://github.com/Torres-ssf/gobarber-web/
 
 ## 📝 License
 
-This project is [MIT](README.md) licensed.
+This project is [MIT](LICENSE.md) licensed.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
