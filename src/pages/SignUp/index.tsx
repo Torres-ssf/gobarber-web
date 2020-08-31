@@ -62,10 +62,19 @@ const Signin: React.FC = () => {
           return;
         }
 
+        let description = '';
+
+        if (err.response.data.message) {
+          description = err.response.data.message;
+        }
+
         addToast({
           type: 'error',
           title: 'Error while creating new account',
-          description: 'An erros has occurred, please try again',
+          description:
+            description === ''
+              ? 'An erros has occurred, please try again'
+              : description,
         });
       }
     },
