@@ -30,6 +30,7 @@ import {
 import logoImg from '../../assets/logo.svg';
 import { useAuth } from '../../hooks/auth';
 import api from '../../services/api';
+import avatarPlaceholder from '../../assets/avatar-placeholder.png';
 
 interface MonthAvailabilityItem {
   day: number;
@@ -165,7 +166,10 @@ const Dashboard: React.FC = () => {
           <img src={logoImg} alt="GoBarber" />
 
           <Profile>
-            <img src={user.avatar_url} alt={user.name} />
+            <img
+              src={user.avatar_url ? user.avatar_url : avatarPlaceholder}
+              alt={user.name}
+            />
             <div>
               <span>Welcome,</span>
               <Link to="/profile">{user.name}</Link>
