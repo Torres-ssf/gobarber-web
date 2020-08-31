@@ -6,6 +6,7 @@ import { FormHandles } from '@unform/core';
 import { useHistory, Link } from 'react-router-dom';
 import { Container, Content, AvatarInput } from './styles';
 import getValidationErrors from '../../util/getValidationErrors';
+import avatarPlaceholder from '../../assets/avatar-placeholder.png';
 
 import Input from '../../Components/Input';
 import Button from '../../Components/Button';
@@ -96,10 +97,19 @@ const Profile: React.FC = () => {
           return;
         }
 
+        let description = '';
+
+        if (err.response.data.message) {
+          description = err.response.data.message;
+        }
+
         addToast({
           type: 'error',
           title: 'Error while trying to update your profile',
-          description: 'An erros has occurred, please try again',
+          description:
+            description === ''
+              ? 'An erros has occurred, please try again'
+              : description,
         });
       }
     },
@@ -143,7 +153,10 @@ const Profile: React.FC = () => {
           onSubmit={handleSubmit}
         >
           <AvatarInput>
-            <img src={user.avatar_url} alt={user.name} />
+            <img
+              src={user.avatar_url ? user.avatar_url : avatarPlaceholder}
+              alt={user.name}
+            />
             <label htmlFor="avatar">
               <FiCamera />
               <input type="file" id="avatar" onChange={handleAvatarChange} />

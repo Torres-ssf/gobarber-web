@@ -54,11 +54,19 @@ const Signin: React.FC = () => {
           return;
         }
 
+        let description = '';
+
+        if (err.response.data.message) {
+          description = err.response.data.message;
+        }
+
         addToast({
           type: 'error',
           title: 'Authentication error',
           description:
-            'An error ocorrered, please check your email/password combination',
+            description === ''
+              ? 'An error ocorrered, please check your email/password combination'
+              : description,
         });
       }
     },

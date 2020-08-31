@@ -13,7 +13,7 @@
   <p align="center">
     The web version of the GoBarber App.
     <br />
-    <a href="#">View Demo(SOON)</a>
+    <a href="https://gobarber.torres-ssf.com/">Live demo</a>
     ·
     <a href="https://github.com/Torres-ssf/gobarber-web/issues">Report Bug</a>
     ·
@@ -42,11 +42,11 @@
 
 ![](screen1.png)
 
-The web version of GoBarber, an app for service providers, such as Barbers, to control customer schedules, received via the Mobile application. This application was designed during the GoStack bootcamp.
+The web version of GoBarber, an application for service providers, such as Barbers, to control customer schedules. This application consumes the [Gobarber API](https://github.com/Torres-ssf/gobarber-backend). This web version is designed to be used by providers, they can create and log into their accounts. Once logged in, they will be redirected to the dashboard, where they can find all the information related to the current day's appointments as well as for future appointments. Customers can use the mobile version of this application to create appointments with their favorite providers. This application was designed during the GoStack bootcamp.
 
 ## Live Demo
 
-Click [here](https://github.com/Torres-ssf/gobarber-web/) for a live demo of the app(SOON).
+Click [here](https://gobarber.torres-ssf.com/) for a live demo of the app.
 
 ### Built With
 
@@ -65,12 +65,6 @@ Front-End(client-side)
 - [Polished](https://www.npmjs.com/package/polished)
 - [React-Icons](https://react-icons.github.io/react-icons/)
 - [Yup](https://www.npmjs.com/package/yup)
-
-```sh
-Testing Frameworks
-```
-
-- [Jest](https://www.npmjs.com/package/jest)
 
 <!-- GETTING STARTED -->
 
@@ -111,11 +105,13 @@ In the project directory, you can run:
 ```JS
 yarn start
 ```
-Runs the app in the development mode.<br />
+- Runs the app in the development mode.<br />
 
 ```JS
-http//localhost:3000
+yarn build
 ```
+- Script to deploy the app in production mode.<br />
+
 
 ## 🤝 Contributing
 
@@ -133,7 +129,7 @@ Feel free to check the [issues page](https://github.com/Torres-ssf/gobarber-web/
 
 ## Acknowledgments
 
-- Built this project was only possible because of the skills I aquired during the [GoStack Bootcamp](https://rocketseat.com.br/).
+- This project was created during the [GoStack Bootcamp](https://rocketseat.com.br/). I am very grateful to them for the knowledge and skills acquired here.
 
 <!-- LICENSE -->
 
