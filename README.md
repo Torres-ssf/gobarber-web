@@ -42,7 +42,7 @@
 
 ![](screen1.png)
 
-The web version of GoBarber, an app for service providers, such as Barbers, to control customer schedules, received via the Mobile application. This application was designed during the GoStack bootcamp.
+The web version of GoBarber, an application for service providers, such as Barbers, to control customer schedules. The web version is designed to be used by providers, they can create and log into their accounts. Once logged in, they will be redirected to the dashboard, where they can find all the information related to the current day's appointments as well as for future appointments. Customers can use the mobile version of this application to create appointments with their favorite providers. This application was designed during the GoStack bootcamp.
 
 ## Live Demo
 
@@ -65,12 +65,6 @@ Front-End(client-side)
 - [Polished](https://www.npmjs.com/package/polished)
 - [React-Icons](https://react-icons.github.io/react-icons/)
 - [Yup](https://www.npmjs.com/package/yup)
-
-```sh
-Testing Frameworks
-```
-
-- [Jest](https://www.npmjs.com/package/jest)
 
 <!-- GETTING STARTED -->
 
@@ -111,11 +105,13 @@ In the project directory, you can run:
 ```JS
 yarn start
 ```
-Runs the app in the development mode.<br />
+- Runs the app in the development mode.<br />
 
 ```JS
-http//localhost:3000
+yarn build
 ```
+- Script to depoly the app in production mode.<br />
+
 
 ## 🤝 Contributing
 
