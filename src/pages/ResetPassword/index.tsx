@@ -57,6 +57,12 @@ const ResetPassword: React.FC = () => {
           token,
         });
 
+        addToast({
+          type: 'success',
+          title: 'Password updated',
+          description: 'Your can log in with your new password now',
+        });
+
         history.push('/');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
