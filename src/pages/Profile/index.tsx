@@ -99,8 +99,11 @@ const Profile: React.FC = () => {
 
         let description = '';
 
-        if (err.response.data.message) {
-          description = err.response.data.message;
+        if (err.response) {
+          const { data: errorData } = err.response;
+          if (errorData && errorData.message) {
+            description = errorData.message;
+          }
         }
 
         addToast({
@@ -108,7 +111,7 @@ const Profile: React.FC = () => {
           title: 'Error while trying to update your profile',
           description:
             description === ''
-              ? 'An erros has occurred, please try again'
+              ? 'An error ocorrered, please check your network connection and try again'
               : description,
         });
       }
