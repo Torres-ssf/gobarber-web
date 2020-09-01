@@ -64,8 +64,11 @@ const Signin: React.FC = () => {
 
         let description = '';
 
-        if (err.response.data.message) {
-          description = err.response.data.message;
+        if (err.response) {
+          const { data: errorData } = err.response;
+          if (errorData && errorData.message) {
+            description = errorData.message;
+          }
         }
 
         addToast({
@@ -73,7 +76,7 @@ const Signin: React.FC = () => {
           title: 'Error while creating new account',
           description:
             description === ''
-              ? 'An erros has occurred, please try again'
+              ? 'An error ocorrered, please check your network connection and try again'
               : description,
         });
       }

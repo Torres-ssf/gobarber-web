@@ -59,9 +59,11 @@ Front-End(client-side)
 - [React](https://github.com/facebook/react)
 - Typescript
 - [Styled-Components](https://styled-components.com/)
+- [react-day-picker](https://www.npmjs.com/package/react-day-picker)
 - [Axios](https://www.npmjs.com/package/axios)
 - [Unform](https://www.npmjs.com/package/unform)
 - [date-fns](https://www.npmjs.com/package/date-fns)
+- [uuid](https://www.npmjs.com/package/uuid)
 - [Polished](https://www.npmjs.com/package/polished)
 - [React-Icons](https://react-icons.github.io/react-icons/)
 - [Yup](https://www.npmjs.com/package/yup)
@@ -96,7 +98,7 @@ cd gobarber-web/
 yarn
 ```
 
-4. This is the client-side of the GoBarber application. You will need to set up the server-side first before using this application. You can find GoBarber Backend [here](https://github.com/Torres-ssf/gobarber-backend).
+4. This is the web version of the GoBarber application. To make it work locally at your system, you will need to make a copy of the `.env.example` file and remove the `.example` from the copied file. This way the application will be able to get in contact with the gobarber API. You can find GoBarber API [here](https://github.com/Torres-ssf/gobarber-backend).
 
 ## Usage
 

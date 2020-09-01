@@ -60,11 +60,22 @@ const ForgotPassword: React.FC = () => {
           return;
         }
 
+        let description = '';
+
+        if (err.response) {
+          const { data: errorData } = err.response;
+          if (errorData && errorData.message) {
+            description = errorData.message;
+          }
+        }
+
         addToast({
           type: 'error',
-          title: 'Error trying to sending change password email',
+          title: 'Error while sending reset password email',
           description:
-            'An error ocorrered while trying to submit your the change password email, please verify your email and try again',
+            description === ''
+              ? 'An error ocorrered, please check your network connection and try again'
+              : description,
         });
       } finally {
         setLoading(false);
@@ -80,7 +91,7 @@ const ForgotPassword: React.FC = () => {
           <img src={logo} alt="GoBarber" />
 
           <Form ref={formRef} onSubmit={handleSubmit}>
-            <h1>Change password</h1>
+            <h1>Request reset password email</h1>
 
             <Input
               name="email"
@@ -90,7 +101,7 @@ const ForgotPassword: React.FC = () => {
             />
 
             <Button loading={loading} type="submit">
-              Change
+              Request
             </Button>
           </Form>
 
