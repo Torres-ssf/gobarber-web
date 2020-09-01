@@ -13,7 +13,7 @@
   <p align="center">
     The web version of the GoBarber App.
     <br />
-    <a href="https://gobarber.torres-ssf.com/">Live demo</a>
+    <a href="https://wwww.gobarber.torres-ssf.com/">Live demo</a>
     ·
     <a href="https://github.com/Torres-ssf/gobarber-web/issues">Report Bug</a>
     ·
@@ -46,7 +46,7 @@ The web version of GoBarber, an application for service providers, such as Barbe
 
 ## Live Demo
 
-Click [here](https://gobarber.torres-ssf.com/) for a live demo of the app.
+Click [here](https://wwww.gobarber.torres-ssf.com/) for a live demo of the app.
 
 ### Built With
 
