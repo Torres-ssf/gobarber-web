@@ -91,7 +91,7 @@ const ForgotPassword: React.FC = () => {
           <img src={logo} alt="GoBarber" />
 
           <Form ref={formRef} onSubmit={handleSubmit}>
-            <h1>Change password</h1>
+            <h1>Request reset password email</h1>
 
             <Input
               name="email"
@@ -101,7 +101,7 @@ const ForgotPassword: React.FC = () => {
             />
 
             <Button loading={loading} type="submit">
-              Change
+              Request
             </Button>
           </Form>
 
