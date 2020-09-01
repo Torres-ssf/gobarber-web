@@ -60,11 +60,22 @@ const ForgotPassword: React.FC = () => {
           return;
         }
 
+        let description = '';
+
+        if (err.response) {
+          const { data: errorData } = err.response;
+          if (errorData && errorData.message) {
+            description = errorData.message;
+          }
+        }
+
         addToast({
           type: 'error',
-          title: 'Error trying to sending change password email',
+          title: 'Error while sending reset password email',
           description:
-            'An error ocorrered while trying to submit your the change password email, please verify your email and try again',
+            description === ''
+              ? 'An error ocorrered, please check your network connection and try again'
+              : description,
         });
       } finally {
         setLoading(false);
