@@ -31,6 +31,7 @@ import logoImg from '../../assets/logo.svg';
 import { useAuth } from '../../hooks/auth';
 import api from '../../services/api';
 import avatarPlaceholder from '../../assets/avatar-placeholder.png';
+import { useToast } from '../../hooks/toast';
 
 interface MonthAvailabilityItem {
   day: number;
@@ -64,6 +65,7 @@ const Dashboard: React.FC = () => {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
 
   const { signOut, user } = useAuth();
+  const { addToast } = useToast();
 
   const handleDateChange = useCallback((day: Date, modifiers: DayModifiers) => {
     if (modifiers.available && !modifiers.disabled) {
@@ -97,17 +99,27 @@ const Dashboard: React.FC = () => {
           day: selectedDate.getDate(),
         },
       })
-      .then(response => {
-        const formattedAppointments = response.data.map(appointment => {
-          return {
-            ...appointment,
-            hour_formatted: format(parseISO(appointment.date), 'HH:mm'),
-          };
-        });
+      .then(
+        response => {
+          const formattedAppointments = response.data.map(appointment => {
+            return {
+              ...appointment,
+              hour_formatted: format(parseISO(appointment.date), 'HH:mm'),
+            };
+          });
 
-        setAppointments(formattedAppointments);
-      });
-  }, [selectedDate]);
+          setAppointments(formattedAppointments);
+        },
+        err => {
+          addToast({
+            type: 'error',
+            title: 'Unable to load server data',
+            description:
+              'An error ocorrered, please check your network connection and try again',
+          });
+        },
+      );
+  }, [selectedDate, addToast]);
 
   const nextAppointment = useMemo(() => {
     return appointments.find(appointment =>
