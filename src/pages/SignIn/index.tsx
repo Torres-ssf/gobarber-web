@@ -56,8 +56,11 @@ const Signin: React.FC = () => {
 
         let description = '';
 
-        if (err.response.data.message) {
-          description = err.response.data.message;
+        if (err.response) {
+          const { data: errorData } = err.response;
+          if (errorData && errorData.message) {
+            description = errorData.message;
+          }
         }
 
         addToast({
@@ -65,7 +68,7 @@ const Signin: React.FC = () => {
           title: 'Authentication error',
           description:
             description === ''
-              ? 'An error ocorrered, please check your email/password combination'
+              ? 'An error ocorrered, please check your network connection and try again'
               : description,
         });
       }
