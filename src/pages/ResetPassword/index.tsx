@@ -77,7 +77,7 @@ const ResetPassword: React.FC = () => {
           type: 'error',
           title: 'Error while reseting password',
           description:
-            'An error ocorrered while trying to reset your password, please try again',
+            'An error ocorrered, please check your network connection and try again',
         });
       }
     },
