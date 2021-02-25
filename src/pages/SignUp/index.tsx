@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { Form } from '@unform/web';
 import { FiMail, FiLock, FiUser, FiArrowLeft } from 'react-icons/fi';
 import * as Yup from 'yup';
@@ -21,13 +21,18 @@ interface SignUpFormData {
 }
 
 const Signin: React.FC = () => {
-  const formRef = useRef<FormHandles>(null);
+  const [loading, setLoading] = useState(false);
+
   const { addToast } = useToast();
+
   const history = useHistory();
+
+  const formRef = useRef<FormHandles>(null);
 
   const handleSubmit = useCallback(
     async (data: SignUpFormData) => {
       try {
+        setLoading(true);
         // eslint-disable-next-line no-unused-expressions
         formRef.current?.setErrors({});
 
@@ -79,6 +84,8 @@ const Signin: React.FC = () => {
               ? 'An error ocorrered, please check your network connection and try again'
               : description,
         });
+      } finally {
+        setLoading(false);
       }
     },
     [addToast, history],
@@ -107,7 +114,9 @@ const Signin: React.FC = () => {
               placeholder="Password"
             />
 
-            <Button type="submit">Create</Button>
+            <Button type="submit" loading={loading}>
+              Create
+            </Button>
           </Form>
 
           <Link to="/">
