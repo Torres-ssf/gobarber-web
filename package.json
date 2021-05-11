@@ -14,7 +14,7 @@
     "@unform/web": "^2.1.0",
     "axios": "^0.21.1",
     "date-fns": "^2.14.0",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "polished": "^3.5.2",
     "react": "^16.13.1",
     "react-day-picker": "^7.4.8",
